@@ -5,8 +5,8 @@ const userSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
     role: String,
-    username: String,
-    password: String
+    // username: String, //no need to declare username and password
+    // password: String
 }, {timestamps: true})
 
 userSchema.plugin(plm); //using passport-local-mongoose as a plug in S
