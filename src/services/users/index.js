@@ -57,4 +57,11 @@ userRouter.post('/verify', passport.authenticate('local'), async(req, res)=>{
         console.log(error)
     }
 })
+
+userRouter.post('/changePassword', passport.authenticate('local'), async(req,res)=>{
+    const user = await db.findById(req.user._id);
+    const result = await user.setPassword(req.body.newPassword)
+    user.save(); //save the object, setPassword does not commit to db
+    res.json(result);
+})
 module.exports = userRouter;
